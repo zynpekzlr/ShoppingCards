@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Navbar from './components/navbar';
+import Amazon from './components/amazon';
 
 function App() {
+
+  const [show,setShow] = useState(true);
+  const [cart,setCart] =useState([]);
+
+  const handleClick= (item) => {
+    if(cart.indexOf(item) !== -1) return;
+    setCart([...cart,item]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <React.Fragment>
+    <Navbar setShow={setShow} />
+    { show ? <Amazon /> : "Cart"}
+   </React.Fragment>
   );
 }
 
