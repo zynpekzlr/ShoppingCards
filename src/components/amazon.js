@@ -10,5 +10,5 @@ export default function amazon({handleClick}) {
             <Cards key={item.id} item={item} handleClick={handleClick} />
         ))}
     </section>
-  )
+  );
 }
